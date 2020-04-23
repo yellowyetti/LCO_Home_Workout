@@ -1,0 +1,2 @@
+rootProject.name='LCO_Home_Workout'
+include ':app'
