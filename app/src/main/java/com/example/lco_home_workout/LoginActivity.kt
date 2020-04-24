@@ -1,7 +1,12 @@
 package com.example.lco_home_workout
 
-import com.google.firebase.auth.FirebaseAuth
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 
-class LoginActivity {
-    private lateinit var auth: FirebaseAuth
+class LoginActivity : AppCompatActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_login)
+    }
 }

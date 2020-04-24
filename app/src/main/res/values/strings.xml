@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">LCO_Home_Workout</string>
+    <string name="string_register_email">register email</string>
+    <string name="string_signin">sign in</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="lco_content_description">LCO Home Workout YouTube Client</string>
 </resources>

@@ -19,8 +19,5 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
-        val currentUer = auth.currentUser
-        Toast.makeText(this, currentUer?.displayName, Toast.LENGTH_LONG).show()
     }
 }
