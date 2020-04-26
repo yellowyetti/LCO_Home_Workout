@@ -30,7 +30,7 @@ class EmailFragment : Fragment() {
 
         v = inflater.inflate(R.layout.fragment_email, container, false)
         textEmail = v.findViewById(R.id.text_email)
-        textEmail.setOnEditorActionListener { v, actionId, event ->
+        textEmail.setOnEditorActionListener { _, actionId, _ ->
             if(actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_GO) {
                 transition()
             }

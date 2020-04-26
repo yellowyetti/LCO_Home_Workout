@@ -5,8 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.EditText
+import androidx.navigation.findNavController
 
 class UsernameFragment : Fragment() {
+
+    private lateinit var v: View
+    private lateinit var textUsername: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +23,19 @@ class UsernameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_username, container, false)
+        v = inflater.inflate(R.layout.fragment_username, container, false)
+        textUsername = v.findViewById(R.id.text_username)
+        textUsername.setOnEditorActionListener { _, actionId, _ ->
+            if(actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_GO) {
+                transition()
+            }
+            false
+        }
+        return v
+    }
+
+    private fun transition() {
+        val action = UsernameFragmentDirections.actionUsernameFragmentToPasswordFragment()
+        v.findNavController().navigate(action)
     }
 }

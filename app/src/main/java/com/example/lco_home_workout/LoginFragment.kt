@@ -22,7 +22,6 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var buttonGoogleSignIn: com.google.android.gms.common.SignInButton
-    private lateinit var buttonSignOut: Button
     private lateinit var buttonCreateAccount: Button
     private val RC_SIGN_IN: Int = 800
     private lateinit var v: View
@@ -47,11 +46,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
         v = inflater.inflate(R.layout.fragment_login, container, false)
 
         buttonGoogleSignIn = v.findViewById(R.id.google_sign_in_button)
-        buttonSignOut = v.findViewById(R.id.button_sign_out)
         buttonCreateAccount = v.findViewById(R.id.button_create_account)
 
         buttonGoogleSignIn.setOnClickListener(this)
-        buttonSignOut.setOnClickListener(this)
         buttonCreateAccount.setOnClickListener(this)
 
         return v
@@ -63,18 +60,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
             R.id.google_sign_in_button -> {
                 try {
                     this.signIn()
-                    Toast.makeText(context, "Signed in", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Toast.makeText(context,"GOOGLE SIGN IN Button FAILED", Toast.LENGTH_SHORT).show()
-                }
-            }
-            R.id.button_sign_out -> {
-                try {
-                    this.signOut()
-                    Toast.makeText(context, "Signed out", Toast.LENGTH_SHORT).show()
-                } catch (e: Exception) {
-                    e.printStackTrace()
                 }
             }
             R.id.button_create_account -> {
@@ -128,9 +116,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
 
     private fun updateUI(currentUser: FirebaseUser?) {
         if(currentUser != null) {
-            Toast.makeText(context, "USER IS ALREADY LOGGED IN", Toast.LENGTH_LONG).show()
+            val intent = Intent(context, MainActivity::class.java)
+            startActivity(intent)
         }
-        Toast.makeText(context, "USER is not LOGGED IN", Toast.LENGTH_SHORT).show()
     }
 
     private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
@@ -141,7 +129,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
         auth.signInWithCredential(credential).addOnCompleteListener(this.requireActivity()) {
             if(it.isSuccessful) {
                 Log.d("LOGIN_FRAGMENT", "signInWithCredential:success")
-                Toast.makeText(context, auth.currentUser!!.displayName, Toast.LENGTH_SHORT).show()
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
             }
             else {
                 Log.w("LOGIN_ACTIVITY", "signInWithCredential:failure")

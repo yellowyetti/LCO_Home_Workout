@@ -89,15 +89,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button_sign_out"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_out"
-            app:layout_constraintBottom_toBottomOf="@+id/signin_text"
-            app:layout_constraintEnd_toStartOf="@+id/signin_text"
-            app:layout_constraintStart_toStartOf="@+id/password_text"
-            app:layout_constraintTop_toTopOf="@+id/signin_text" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
