@@ -7,10 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.*
 import java.lang.Exception
 
@@ -19,7 +21,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var mGoogleApiClient: GoogleApiClient
     private lateinit var mGoogleSignInButton: com.google.android.gms.common.SignInButton
+    private lateinit var signOutButton: Button
     private val RC_SIGN_IN: Int = 800
     private lateinit var v: View
 
@@ -43,7 +47,10 @@ class LoginFragment : Fragment(), View.OnClickListener {
         v = inflater.inflate(R.layout.fragment_login, container, false)
 
         mGoogleSignInButton = v.findViewById(R.id.google_sign_in_button)
+        signOutButton = v.findViewById(R.id.button_sign_out)
+
         mGoogleSignInButton.setOnClickListener(this)
+        signOutButton.setOnClickListener(this)
 
         return v
     }
@@ -54,9 +61,18 @@ class LoginFragment : Fragment(), View.OnClickListener {
             R.id.google_sign_in_button -> {
                 try {
                     this.signIn()
+                    Toast.makeText(context, "Signed in", Toast.LENGTH_SHORT).show()
                 } catch (e: Exception) {
                     e.printStackTrace()
                     Toast.makeText(context,"GOOGLE SIGN IN Button FAILED", Toast.LENGTH_SHORT).show()
+                }
+            }
+            R.id.button_sign_out -> {
+                try {
+                    this.signOut()
+                    Toast.makeText(context, "Signed out", Toast.LENGTH_SHORT).show()
+                } catch (e: Exception) {
+                    e.printStackTrace()
                 }
             }
             else -> {
@@ -77,6 +93,11 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private fun signIn() {
         val signInIntent = mGoogleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    private fun signOut() {
+        auth.signOut()
+        mGoogleSignInClient.signOut()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
