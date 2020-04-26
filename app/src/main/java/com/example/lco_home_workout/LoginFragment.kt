@@ -79,7 +79,8 @@ class LoginFragment : Fragment(), View.OnClickListener {
             }
             R.id.button_create_account -> {
                 try {
-                    val action = LoginFragmentDirections.actionLoginFragmentToEmailPasswordFragment()
+                    //Action name was not
+                    val action = LoginFragmentDirections.actionLoginFragmentToEmailFragment()
                     v.findNavController().navigate(action)
                 }
                 catch (e: Exception) { e.printStackTrace() }

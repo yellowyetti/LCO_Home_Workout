@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-/**
- * A simple [Fragment] subclass.
- */
-class EmailPasswordFragment : Fragment() {
-
+class UsernameFragment : Fragment() {
+    
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -20,6 +17,6 @@ class EmailPasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_email_password, container, false)
+        return inflater.inflate(R.layout.fragment_username, container, false)
     }
 }
