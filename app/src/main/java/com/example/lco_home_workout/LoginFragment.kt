@@ -9,10 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.navigation.findNavController
 import com.google.android.gms.auth.api.Auth
 import com.google.android.gms.auth.api.signin.*
 import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.GoogleApiClient
 import com.google.firebase.auth.*
 import java.lang.Exception
 
@@ -21,9 +21,9 @@ class LoginFragment : Fragment(), View.OnClickListener {
     private lateinit var auth: FirebaseAuth
     private lateinit var gso: GoogleSignInOptions
     private lateinit var mGoogleSignInClient: GoogleSignInClient
-    private lateinit var mGoogleApiClient: GoogleApiClient
-    private lateinit var mGoogleSignInButton: com.google.android.gms.common.SignInButton
-    private lateinit var signOutButton: Button
+    private lateinit var buttonGoogleSignIn: com.google.android.gms.common.SignInButton
+    private lateinit var buttonSignOut: Button
+    private lateinit var buttonCreateAccount: Button
     private val RC_SIGN_IN: Int = 800
     private lateinit var v: View
 
@@ -46,11 +46,13 @@ class LoginFragment : Fragment(), View.OnClickListener {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_login, container, false)
 
-        mGoogleSignInButton = v.findViewById(R.id.google_sign_in_button)
-        signOutButton = v.findViewById(R.id.button_sign_out)
+        buttonGoogleSignIn = v.findViewById(R.id.google_sign_in_button)
+        buttonSignOut = v.findViewById(R.id.button_sign_out)
+        buttonCreateAccount = v.findViewById(R.id.button_create_account)
 
-        mGoogleSignInButton.setOnClickListener(this)
-        signOutButton.setOnClickListener(this)
+        buttonGoogleSignIn.setOnClickListener(this)
+        buttonSignOut.setOnClickListener(this)
+        buttonCreateAccount.setOnClickListener(this)
 
         return v
     }
@@ -74,6 +76,13 @@ class LoginFragment : Fragment(), View.OnClickListener {
                 } catch (e: Exception) {
                     e.printStackTrace()
                 }
+            }
+            R.id.button_create_account -> {
+                try {
+                    val action = LoginFragmentDirections.actionLoginFragmentToEmailPasswordFragment()
+                    v.findNavController().navigate(action)
+                }
+                catch (e: Exception) { e.printStackTrace() }
             }
             else -> {
                 return

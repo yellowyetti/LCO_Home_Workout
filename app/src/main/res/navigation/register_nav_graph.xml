@@ -9,5 +9,18 @@
         android:id="@+id/loginFragment"
         android:name="com.example.lco_home_workout.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_emailPasswordFragment"
+            app:destination="@id/emailPasswordFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/emailPasswordFragment"
+        android:name="com.example.lco_home_workout.EmailPasswordFragment"
+        android:label="fragment_email_password"
+        tools:layout="@layout/fragment_email_password" />
 </navigation>

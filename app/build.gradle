@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
     compileSdkVersion 29
@@ -28,6 +29,8 @@ android {
 
 dependencies {
     def nav_version = "2.3.0-alpha05"
+    def fragment_version = "1.2.4"
+
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -45,5 +48,9 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    //Inflates nav graph with FragmentContainerView item
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
+
+
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
 }
