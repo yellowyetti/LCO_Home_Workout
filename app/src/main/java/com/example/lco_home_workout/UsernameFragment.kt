@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 
 class UsernameFragment : Fragment() {
 
     private lateinit var v: View
     private lateinit var textUsername: EditText
+    private val args: UsernameFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +36,14 @@ class UsernameFragment : Fragment() {
         return v
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     private fun transition() {
-        val action = UsernameFragmentDirections.actionUsernameFragmentToPasswordFragment()
+        val email = args.email
+        val username = textUsername.text.toString()
+        val action = UsernameFragmentDirections.actionUsernameFragmentToPasswordFragment(username, email)
         v.findNavController().navigate(action)
     }
 }

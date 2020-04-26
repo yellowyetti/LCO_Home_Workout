@@ -40,7 +40,8 @@ class EmailFragment : Fragment() {
     }
 
     private fun transition() {
-        val action = EmailFragmentDirections.actionEmailFragmentToUsernameFragment()
+        val email = textEmail.text.toString()
+        val action = EmailFragmentDirections.actionEmailFragmentToUsernameFragment(email)
         v.findNavController().navigate(action)
     }
 }
