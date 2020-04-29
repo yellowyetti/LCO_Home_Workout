@@ -11,6 +11,9 @@
     <string name="default_duration">45  seconds</string>
     <string name="default_workout">Default Workout</string>
 
+    <string name="welcome_message">Hello, %1$s! Today\'s workout will take about %2$d minutes. Good luck!</string>
+    <string name="finish_message">Good work %1$s</string>
+
     <string-array name="workouts">
         <item>push ups</item>
         <item>abdomen stretch</item>

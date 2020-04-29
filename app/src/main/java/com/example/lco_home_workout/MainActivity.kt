@@ -37,9 +37,9 @@ class MainActivity : Activity(), View.OnClickListener {
         textDisplayName = findViewById(R.id.text_display_name)
 
         if(displayName != null) {
-            textDisplayName.text = displayName
+            textDisplayName.text = getString(R.string.welcome_message, displayName,7)
         }
-        else textDisplayName.text = auth.currentUser?.email
+        else textDisplayName.text = getString(R.string.welcome_message, auth.currentUser?.email, 7)
 
         buttonSignOut.setOnClickListener(this)
     }
