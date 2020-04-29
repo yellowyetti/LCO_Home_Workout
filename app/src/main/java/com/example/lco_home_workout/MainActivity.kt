@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -15,6 +16,7 @@ import java.lang.Exception
 class MainActivity : Activity(), View.OnClickListener {
 
     private lateinit var buttonSignOut: Button
+    private lateinit var textDisplayName: TextView
     private lateinit var auth: FirebaseAuth
     private lateinit var mGoogleSignInClient: GoogleSignInClient
     private lateinit var gso: GoogleSignInOptions
@@ -28,9 +30,16 @@ class MainActivity : Activity(), View.OnClickListener {
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
+        val displayName = auth.currentUser?.displayName
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
         buttonSignOut = findViewById(R.id.button_sign_out)
+        textDisplayName = findViewById(R.id.text_display_name)
+
+        if(displayName != null) {
+            textDisplayName.text = displayName
+        }
+        else textDisplayName.text = auth.currentUser?.email
 
         buttonSignOut.setOnClickListener(this)
     }

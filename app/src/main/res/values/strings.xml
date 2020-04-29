@@ -8,4 +8,24 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="sign_out">sign out</string>
     <string name="email_hint">email</string>
+    <string name="default_duration">45  seconds</string>
+    <string name="default_workout">Default Workout</string>
+
+    <string-array name="workouts">
+        <item>push ups</item>
+        <item>abdomen stretch</item>
+        <item>barbell incline</item>
+        <item>bench press</item>
+        <item>declined crunches</item>
+        <item>curls</item>
+        <item>dumbbell planks</item>
+        <item>hindu stretch</item>
+        <item>leg stretch</item>
+        <item>rows</item>
+        <item>sit ups</item>
+        <item>triceps press</item>
+        <item>v stretch</item>
+        <item>yoga ball raise</item>
+    </string-array>
+
 </resources>
