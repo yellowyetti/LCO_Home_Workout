@@ -54,6 +54,11 @@ dependencies {
     implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
     //Inflates nav graph with FragmentContainerView item
     implementation "androidx.fragment:fragment-ktx:$fragment_version"
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"
+
+
 
 
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
