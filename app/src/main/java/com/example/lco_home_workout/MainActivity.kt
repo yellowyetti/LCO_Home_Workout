@@ -21,11 +21,11 @@ import java.lang.Exception
 
 class MainActivity : Activity(), View.OnClickListener {
 
-//    private lateinit var buttonSignOut: Button
+    private lateinit var buttonSignOut: Button
 //    private lateinit var textDisplayName: TextView
-//    private lateinit var auth: FirebaseAuth
-//    private lateinit var mGoogleSignInClient: GoogleSignInClient
-//    private lateinit var gso: GoogleSignInOptions
+    private lateinit var auth: FirebaseAuth
+    private lateinit var mGoogleSignInClient: GoogleSignInClient
+    private lateinit var gso: GoogleSignInOptions
 //    private lateinit var linearLayoutParent: LinearLayout
     private lateinit var recyclerView: RecyclerView
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
@@ -35,15 +35,15 @@ class MainActivity : Activity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        auth = FirebaseAuth.getInstance()
-//        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-//            .requestIdToken(getString(R.string.default_web_client_id))
-//            .requestEmail()
-//            .build()
+        auth = FirebaseAuth.getInstance()
+        gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
 //        val displayName = auth.currentUser?.displayName
 //
-//        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
-//        buttonSignOut = findViewById(R.id.button_sign_out)
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        buttonSignOut = findViewById(R.id.button_sign_out)
 //        textDisplayName = findViewById(R.id.text_display_name)
 //        linearLayoutParent = findViewById(R.id.linear_layout_parent)
 //
@@ -59,27 +59,27 @@ class MainActivity : Activity(), View.OnClickListener {
             adapter = viewAdapter
         }
 
-//        buttonSignOut.setOnClickListener(this)
+        buttonSignOut.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
-//        when(v!!.id) {
-//            R.id.button_sign_out -> {
-//                try {
-//                    this.signOut()
-//                    val intent = Intent(this, LoginActivity::class.java)
-//                    startActivity(intent)
-//                } catch (e: Exception) {
-//                    e.printStackTrace()
-//                }
-//            }
-//        }
+        when(v!!.id) {
+            R.id.button_sign_out -> {
+                try {
+                    this.signOut()
+                    val intent = Intent(this, LoginActivity::class.java)
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }
+        }
     }
 
-//    private fun signOut() {
-//        auth.signOut()
-//        mGoogleSignInClient.signOut()
-//    }
+    private fun signOut() {
+        auth.signOut()
+        mGoogleSignInClient.signOut()
+    }
 
     private fun generateCards(): MutableList<WorkoutInfo> {
         val array: Array<String> = resources.getStringArray(R.array.workouts)
