@@ -52,15 +52,8 @@ class MainActivity : Activity(), View.OnClickListener {
 //        }
 //        else textDisplayName.text = getString(R.string.welcome_message, auth.currentUser?.email, 7)
 
-//        generateCards()
-
         viewManager = LinearLayoutManager(this)
-
-        val pushups = WorkoutInfo("push ups", 10, getDrawable(R.drawable.pushups))
-        val situps = WorkoutInfo("sit ups", 40, getDrawable(R.drawable.situps))
-        val workouts = arrayOf(pushups, situps)
-
-        viewAdapter = CardAdapter(workouts)
+        viewAdapter = CardAdapter(generateCards())
         recyclerView = findViewById<RecyclerView>(R.id.recycler_view_activity_main).apply {
             layoutManager = viewManager
             adapter = viewAdapter
@@ -88,7 +81,56 @@ class MainActivity : Activity(), View.OnClickListener {
 //        mGoogleSignInClient.signOut()
 //    }
 
-//    private fun generateCards() {
-//
-//    }
+    private fun generateCards(): MutableList<WorkoutInfo> {
+        val array: Array<String> = resources.getStringArray(R.array.workouts)
+        val workouts: MutableList<WorkoutInfo> = ArrayList()
+
+        for (i in 1..8) {
+            when(val workout = array[(0..array.size).random()]) {
+                    "push ups" -> {
+                        workouts.add(WorkoutInfo(workout, 60, getDrawable(R.drawable.pushups)))
+                    }
+                    "abdomen stretch" -> {
+                        workouts.add(WorkoutInfo(workout, 60, getDrawable(R.drawable.abdomen_stretch)))
+                    }
+                    "barbell incline" -> {
+                        workouts.add(WorkoutInfo(workout, 100, getDrawable(R.drawable.barbell_incline)))
+                    }
+                    "bench press" -> {
+                        workouts.add(WorkoutInfo(workout, 200, getDrawable(R.drawable.bench_press)))
+                    }
+                    "declined crunches" -> {
+                        workouts.add(WorkoutInfo(workout, 60, getDrawable(R.drawable.declined_crunches)))
+                    }
+                    "curls" -> {
+                        workouts.add(WorkoutInfo(workout, 40, getDrawable(R.drawable.dumbell_curls)))
+                    }
+                    "dumbbell planks" -> {
+                        workouts.add(WorkoutInfo(workout, 60, getDrawable(R.drawable.dumbell_planks)))
+                    }
+                    "hindu stretch" -> {
+                        workouts.add(WorkoutInfo(workout, 40, getDrawable(R.drawable.hindu_stretch)))
+                    }
+                    "leg stretch" -> {
+                        workouts.add(WorkoutInfo(workout, 60, getDrawable(R.drawable.leg_stretch)))
+                    }
+                    "rows" -> {
+                        workouts.add(WorkoutInfo(workout, 400, getDrawable(R.drawable.rows)))
+                    }
+                    "sit ups" -> {
+                        workouts.add(WorkoutInfo(workout, 90, getDrawable(R.drawable.situps)))
+                    }
+                    "triceps press" -> {
+                        workouts.add(WorkoutInfo(workout, 60, getDrawable(R.drawable.tricep_press)))
+                    }
+                    "v stretch" -> {
+                        workouts.add(WorkoutInfo(workout, 60, getDrawable(R.drawable.v_stretch)))
+                    }
+                    "yoga ball raise" -> {
+                        workouts.add(WorkoutInfo(workout, 40, getDrawable(R.drawable.yoga_ball_raise)))
+                    }
+            }
+        }
+        return workouts
+    }
 }

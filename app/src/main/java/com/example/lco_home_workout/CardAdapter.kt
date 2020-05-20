@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class CardAdapter(private val cardSet: Array<WorkoutInfo>): RecyclerView.Adapter<CardAdapter.CardViewHolder>(){
+class CardAdapter(private val cardSet: MutableList<WorkoutInfo>): RecyclerView.Adapter<CardAdapter.CardViewHolder>(){
 
     class CardViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         var itemWorkoutName: TextView = itemView.findViewById(R.id.text_exercise_name)
