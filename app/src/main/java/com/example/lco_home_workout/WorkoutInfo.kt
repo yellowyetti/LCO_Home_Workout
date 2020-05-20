@@ -1,4 +1,6 @@
 package com.example.lco_home_workout
 
-class WorkoutInfo(val name: String, val duration: Int) {
+import android.graphics.drawable.Drawable
+
+class WorkoutInfo(val name: String, val duration: Int, val image: Drawable?) {
 }

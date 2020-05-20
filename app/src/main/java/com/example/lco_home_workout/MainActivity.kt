@@ -56,8 +56,8 @@ class MainActivity : Activity(), View.OnClickListener {
 
         viewManager = LinearLayoutManager(this)
 
-        val pushups = WorkoutInfo("push ups", 10)
-        val situps = WorkoutInfo(name = "sit ups", duration = 40)
+        val pushups = WorkoutInfo("push ups", 10, getDrawable(R.drawable.pushups))
+        val situps = WorkoutInfo("sit ups", 40, getDrawable(R.drawable.situps))
         val workouts = arrayOf(pushups, situps)
 
         viewAdapter = CardAdapter(workouts)
